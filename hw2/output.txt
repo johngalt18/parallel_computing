@@ -1,0 +1,24 @@
+Time to execute 900000000 points with 1 threads in microseconds 3978280
+Area: 8.4823e+17
+Time to execute 900000000 points with 2 threads in microseconds 1998269
+Area: 8.4823e+17
+Time to execute 900000000 points with 3 threads in microseconds 1383137
+Area: 8.4823e+17
+Time to execute 900000000 points with 4 threads in microseconds 1047352
+Area: 8.4823e+17
+Time to execute 900000000 points with 5 threads in microseconds 878668
+Area: 8.4823e+17
+Time to execute 900000000 points with 6 threads in microseconds 783969
+Area: 8.4823e+17
+Time to execute 900000000 points with 7 threads in microseconds 915770
+Area: 8.4823e+17
+Time to execute 900000000 points with 8 threads in microseconds 853458
+Area: 8.4823e+17
+Time to execute 900000000 points with 9 threads in microseconds 872194
+Area: 8.4823e+17
+Time to execute 900000000 points with 10 threads in microseconds 861693
+Area: 8.4823e+17
+Time to execute 900000000 points with 11 threads in microseconds 809758
+Area: 8.4823e+17
+Time to execute 900000000 points with 12 threads in microseconds 753943
+Area: 8.4823e+17
