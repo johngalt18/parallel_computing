@@ -2,6 +2,7 @@
 #include <thread>
 #include <mutex>
 #include <chrono>
+#include <random>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ public:
     void operator()() {
         while (true) {
             cout << "Philosopher " << id << " is thinking.\n";
-            this_thread::sleep_for(std::chrono::milliseconds(3000));
+            this_thread::sleep_for(std::chrono::milliseconds(get_random_int(100, 1000)));
 
             // Pick up left fork
             unique_lock<mutex> left_lock(left_fork.mtx);
@@ -35,14 +36,14 @@ public:
                 } else {
                     // Release left fork and try again later
                     left_lock.unlock();
-                    this_thread::sleep_for(chrono::milliseconds(3000));
+                    this_thread::sleep_for(chrono::milliseconds(get_random_int(100, 1000)));
                     left_lock.lock();
                     cout << "Philosopher " << id << " is waiting for right fork.\n";
                 }
             }
 
             cout << "Philosopher " << id << " is eating.\n";
-            this_thread::sleep_for(chrono::milliseconds(3000));
+            this_thread::sleep_for(chrono::milliseconds(get_random_int(100, 1000)));
             num_eats++;
             cout << "Philosopher " << id << " ate " << num_eats << " times.\n";
 
@@ -62,7 +63,16 @@ private:
     Fork& left_fork;
     Fork& right_fork;
     int num_eats;
+    
+    static int get_random_int(int min, int max) {
+        static std::random_device rd;
+        static std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dis(min, max);
+        return dis(gen);
+    }
 };
+
+
 
 int main() {
     array<Fork, num_philosophers> forks;
@@ -82,7 +92,7 @@ int main() {
     }
 
     // Run for a fixed amount of time
-    this_thread::sleep_for(chrono::seconds(10));
+    this_thread::sleep_for(chrono::seconds(50));
     
     for (int i = 0; i < num_philosophers; i++) {
         threads[i].detach();
